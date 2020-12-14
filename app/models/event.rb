@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
 
-  validates :name, :location presence: true
+  has_many :registrations, dependent: :destroy
+
+  validates :name, :location, presence: true
 
   validates :description, length: { minimum: 25 }
 
