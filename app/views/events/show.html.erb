@@ -1,4 +1,4 @@
-<section class = 'event'>
+<section class = 'event-details'>
   <div class = 'image'>
     <%= image_tag @event.image_file_name %>
   </div>
@@ -12,6 +12,15 @@
     <p>
       <%= @event.description %>
     </p>
+
+  <div class = 'register'>
+    <%= link_to "Register!", new_event_registration_path(@event),
+                class: 'register' %>
+    <p>
+      <%= link_to "Who's registered?", event_registrations_path(@event) %>
+    </p>
+  </div>
+
   </div>
 </section>
 
