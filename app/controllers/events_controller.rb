@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.upcoming
   end
-  
+
   def show
     @event = Event.find(params[:id])
   end
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       redirect_to @event, notice: 'Event successfully created!'
-    else 
+    else
       render :new
     end
   end

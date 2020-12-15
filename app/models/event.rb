@@ -1,5 +1,4 @@
 class Event < ApplicationRecord
-
   has_many :registrations, dependent: :destroy
 
   validates :name, :location, presence: true
@@ -8,12 +7,12 @@ class Event < ApplicationRecord
 
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
-  validates :capacity, numericality: 
+  validates :capacity, numericality:
                       { only_integer: true, greater_than: 0 }
 
   validates :image_file_name, format: {
     with: /\w+\.(jpg|png)\z/i,
-    message: "must be  JPG or PNG file"
+    message: 'must be  JPG or PNG file'
   }
 
   def self.upcoming
