@@ -1,9 +1,6 @@
 class Registration < ApplicationRecord
   belongs_to :event
-
-  validates :name, presence: true
-
-  validates :email, format: { with: /\S+@\S+/ } #  non-whitespace character
+  belongs_to :user
 
   HOW_HEARD_OPTIONS = [
     'NewsLetter',
