@@ -4,7 +4,16 @@ class EventsController < ApplicationController
   before_action :require_admin, except: %i[index show]
 
   def index
-    @events = Event.upcoming
+    case params[:filter]
+    when 'past'
+      @events = Event.past
+    when 'free'
+      @events = Event.free
+    when 'recent'
+      @events = Event.recent
+    else
+      @events = Event.upcoming
+    end
   end
 
   def show
@@ -53,6 +62,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-          .permit(:name, :description, :location, :price, :starts_at, :capacity, :image_file_name)
+          .permit(:name, :description, :location, :price, :starts_at, :capacity, :image_file_name, category_ids: [])
   end
 end
