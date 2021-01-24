@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
   get 'events/filter/:filter' => 'events#index', as: :filtered_events
+  get 'users/2' => 'users#show', as: :admin_user
 
   resources :events do
     resources :registrations
